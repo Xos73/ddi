@@ -17,4 +17,5 @@ The DDI will have following features:
 * GUI interface to manage both services
 * GUI interface to inspect who is on your network
 
-Based on https://github.com/m-mizutani/docker-based-home-router
+Based on https://dev.to/mizutani/design--implementation-of-modern-router-with-docker--linux-for-home-and-small-office-4301
+Github: https://github.com/m-mizutani/docker-based-home-router
