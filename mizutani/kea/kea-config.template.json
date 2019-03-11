@@ -1,0 +1,51 @@
+{
+  "Dhcp4": {
+    "interfaces-config": {
+      "interfaces": [
+        "lo"
+      ],
+      "dhcp-socket-type": "raw"
+    },
+    "lease-database": {
+      "type": "mysql",
+			"name": "dhcpdb",
+			"host": "127.0.0.1",
+			"user": "root",
+			"password": "__MYSQL_ROOT_PASSWORD__"
+    },
+    "valid-lifetime": 4000,
+    "subnet4": [
+      {
+        "subnet": "10.0.0.0/24",
+        "pools": [
+          {
+            "pool": "10.0.0.129 - 10.0.0.254"
+          }
+        ],
+        "option-data": [
+          {
+            "name": "routers",
+            "data": "10.0.0.1"
+          },
+          {
+            "name": "domain-name-servers",
+            "data": "10.0.0.1"
+          }
+        ]
+      }
+    ]
+  },
+  "Logging": {
+    "loggers": [
+      {
+        "name": "kea-dhcp4",
+        "output_options": [
+          {
+            "output": "stdout"
+          }
+        ],
+        "severity": "INFO"
+      }
+    ]
+  }
+}
