@@ -16,3 +16,5 @@ The DDI will have following features:
 * Provide IPAM (IP Address Management) services
 * GUI interface to manage both services
 * GUI interface to inspect who is on your network
+
+Based on https://github.com/m-mizutani/docker-based-home-router
