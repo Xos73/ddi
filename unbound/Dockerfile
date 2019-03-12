@@ -4,6 +4,8 @@ RUN apk --no-cache add unbound
 
 RUN mkdir -p /etc/unbound
 COPY unbound.conf /etc/unbound/unbound.conf
+COPY db.flaviani.be /etc/unbound/db.flaviani.be
+COPY db.10.10.10 /etc/unbound/db.10.10.10
 
 CMD ["unbound", "-d", "-c", "/etc/unbound/unbound.conf"]
 

@@ -1,0 +1,59 @@
+;
+; BIND data file for zone flaviani.be
+;
+$TTL	604800
+@	IN	SOA	coreos.flaviani.be. admin.flaviani.be. (
+			2012110212
+			604800
+			86400
+			2419200
+			604800 )
+;
+
+10.10.10.in-addr.arpa.	IN	NS	coreos.flaviani.be.
+
+;Routers - AP
+1	IN	PTR	router.flaviani.be.
+2	IN	PTR	rtr002.flaviani.be.
+
+;servers - nas devices
+10	IN	PTR	apollo.flaviani.be.
+30	IN	PTR	apollo30.flaviani.be.
+11	IN	PTR	iomega.flaviani.be.
+12	IN	PTR	plextor.flaviani.be.
+14	IN	PTR	coreos.flaviani.be.
+15	IN	PTR	ds214.flaviani.be.
+
+;TV-consoles-Raspberry
+20	IN	PTR	LG-tv-lan.flaviani.be.
+21	IN	PTR	LG-tv.flaviani.be.
+22	IN	PTR	PS3-lan.flaviani.be.
+23	IN	PTR	PS3.flaviani.be.
+24	IN	PTR	Wii.flaviani.be.
+25	IN	PTR	Xios-DS.flaviani.be.
+26	IN	PTR	Bedroom-PI.flaviani.be.
+27	IN	PTR	Living-PI.flaviani.be.
+28	IN	PTR	SoundTouch20.flaviani.be.
+
+;Laptop-PCs
+54.10.10.10.in-addr.arpa.	IN	PTR	MacAir-Eef.flaviani.be.
+56	IN	PTR	Surface2-Pro.flaviani.be.
+
+;Decoders - get their IP from BBox (no DHCP)
+64	IN	PTR	decoder-living.flaviani.be.
+65	IN	PTR	decoder-bedroom.flaviani.be.
+
+;Tablets-Cell
+70	IN	PTR	iPad-Senne.flaviani.be.
+71	IN	PTR	iPad-Anna.flaviani.be.
+72	IN	PTR	iPad-Milo.flaviani.be.
+73	IN	PTR	Samsung.flaviani.be.
+74	IN	PTR	gsm-Eef.flaviani.be.
+75	IN	PTR	HTC-One.flaviani.be.
+76	IN	PTR	SurfaceRT.flaviani.be.
+77	IN	PTR	Surface2.flaviani.be.
+240	IN	PTR	ml-3561nd.flaviani.be.
+;
+63.10.10.10.in-addr.arpa.	IN	PTR	Lenovo-Milo.flaviani.be.
+61.10.10.10.in-addr.arpa.	IN	PTR	Lenovo-Anna.flaviani.be.
+50.10.10.10.in-addr.arpa.	IN	PTR	lpt-bt-05.flaviani.be.
