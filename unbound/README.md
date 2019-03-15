@@ -4,7 +4,8 @@ unbound is a lightweigth secure DNS server implementation.
 Idea is to use create a docker compose to:
 - [x] pull alpine linux
 - [x] install unbound
-- [x] push unbound configuration
+- [x] Load unbound configuration and run it
+- [x] Use/load pre-configured zone configuration
 
 Where to store the configuration and make sure it persists after reboot?
 - [ ] Analyse / Test
@@ -29,5 +30,6 @@ docker run -d -p 53:53/udp -p 53:53/tcp unbound_dns
 * Make your GitHub directory public
 * Build a container and run it
 ```
-docker build --tag=unbound_dns https://github.com/Xos73/ddi.git#master:unbound && docker run -d -p 53:53/tcp -p 53:53/udp unbound_dns
+docker build --tag=unbound_dns https://github.com/Xos73/ddi.git#master:unbound && \
+docker run -d -p 53:53/tcp -p 53:53/udp unbound_dns
 ```
