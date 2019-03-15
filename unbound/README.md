@@ -7,12 +7,6 @@ Idea is to use create a docker compose to:
 - [x] Load unbound configuration and run it
 - [x] Use/load pre-configured zone configuration
 
-Where to store the configuration and make sure it persists after reboot?
-- [ ] Analyse / Test
-  - use volumes in container (and share content between containers)
-  - use `--mount`in docker run to mount host available spave
-- [ ] Include this into Dockerfile
-
 ## Build from local directory/repository
 
 Build the image from the directory containing `Dockerfile` and `unbound.conf`:
