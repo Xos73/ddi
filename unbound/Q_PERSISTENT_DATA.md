@@ -1,4 +1,4 @@
-# Persistnet data
+# Persistent data
 How to work/cope with the issue of:
 1. Persistent data (retain data even after a container destroy)
   a. on same (host) docker machine
