@@ -2,11 +2,15 @@
 unbound is a lightweigth secure DNS server implementation.
 
 Idea is to use create a docker compose to:
-- [ ] pull alpine linux
-- [ ] install unbound
-- [ ] push unbound configuration
+- [x] pull alpine linux
+- [x] install unbound
+- [x] push unbound configuration
 
-?? Where to store the configuration and make sure it persists after reboot
+Where to store the configuration and make sure it persists after reboot?
+- [ ] Analyse / Test
+  - use volumes in container (and share content between containers)
+  - use `--mount`in docker run to mount host available spave
+- [ ] Include this into Dockerfile
 
 ## Build from local directory/repository
 
