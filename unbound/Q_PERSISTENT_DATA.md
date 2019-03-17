@@ -18,3 +18,13 @@ For volumes in docker: see https://docs.docker.com/storage/volumes/
 
 For mounts in docker: see https://docs.docker.com/storage/bind-mounts/
 ![Use bind mounts](https://docs.docker.com/storage/images/types-of-mounts-bind.png)
+
+
+```
+docker run -d \
+    --volume-driver=nfs
+    -v ds214.flaviani.be/dockerNFS/config,target=/etc/test \
+    -p 53:53/tcp \
+    -p 53:53/udp \
+    unbound_dns
+```
