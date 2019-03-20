@@ -8,7 +8,7 @@ COPY unbound.conf /etc/unbound/cfg/unbound.conf
 COPY db.flaviani.be /etc/unbound/cfg/db.flaviani.be
 COPY db.10.10.10 /etc/unbound/cfg/db.10.10.10
 COPY unbound.log /etc/unbound/log/unbound.log
-RUN chmod 646 /etc/unbound/logunbound.log
+RUN chmod 646 /etc/unbound/log/unbound.log
 
 CMD ["unbound", "-d", "-c", "/etc/unbound/unbound.conf"]
 
