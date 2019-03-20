@@ -25,7 +25,8 @@ docker run -d -p 53:53/udp -p 53:53/tcp unbound_dns
 * Map your NFS volume
 * Build a container and run it
 ```
-docker volume create --driver local --name unbound_cfg --opt type=nfs --opt device=:/dockerNFS/config --opt o=addr=10.10.10.14,rw,noatime
+docker volume create --driver local --name unbound_cfg --opt type=nfs \
+--opt device=:/dockerNFS/config --opt o=addr=10.10.10.14,rw,noatime
 docker build --tag=unbound_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run -d -p 53:53/tcp -p 53:53/udp unbound_dns --mount source=unbound-cfg,destination=/etc/test,readonly
+docker run -d -p 53:53/tcp -p 53:53/udp unbound_dns --mount source=unbound_cfg,destination=/etc/test,readonly
 ```
