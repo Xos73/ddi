@@ -26,7 +26,5 @@ docker run -d -p 53:53/udp -p 53:53/tcp unbound_dns
 * Build a container and run it
 ```
 docker build --tag=unbound_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run -d -p 53:53/tcp -p 53:53/udp --mount 'src=unbound_cfg,dst=/etc/unbound/cfg,\
-volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/config,\
-"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' unbound_dns
+docker run -d -p 53:53/tcp -p 53:53/udp --mount 'src=unbound_cfg,dst=/etc/unbound/cfg,volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/config,"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' unbound_dns
 ```
