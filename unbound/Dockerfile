@@ -10,6 +10,6 @@ COPY db.10.10.10 /etc/unbound/cfg/db.10.10.10
 COPY unbound.log /etc/unbound/log/unbound.log
 RUN chmod 646 /etc/unbound/log/unbound.log
 
-CMD ["unbound", "-d", "-c", "/etc/unbound/unbound.conf"]
+CMD ["unbound", "-d", "-c", "/etc/unbound/cfg/unbound.conf"]
 
 EXPOSE 53/udp 53/tcp
