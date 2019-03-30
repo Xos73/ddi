@@ -12,5 +12,6 @@ RUN apk update
 # RUN chmod 646 /etc/unbound/log/unbound.log
 
 # CMD ["unbound", "-d", "-c", "/etc/unbound/cfg/unbound.conf"]
+CMD ["/bin/sh"]
 
 # EXPOSE 67/udp
