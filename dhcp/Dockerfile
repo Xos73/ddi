@@ -14,4 +14,4 @@ COPY dhcpd.conf /etc/dhcp/cfg/dhcpd.conf
 
 CMD ["dhcpd", "-cf", "/etc/dhcp/cfg/dhcpd.conf", "-lf", "/etc/dhcp/leases/dhcp.leases"]
 
-EXPOSE 67/udp
+# EXPOSE 67/udp
