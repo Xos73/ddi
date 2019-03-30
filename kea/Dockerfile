@@ -1,6 +1,7 @@
 FROM alpine:latest
 
 # RUN apk --no-cache add kea
+RUN apk update
 
 # RUN mkdir -p /etc/unbound/cfg
 # RUN mkdir -p /etc/unbound/log
