@@ -5,6 +5,7 @@ RUN apk --no-cache add dhcp
 RUN mkdir -p /etc/dhcp/cfg
 RUN mkdir -p /etc/dhcp/log
 RUN mkdir -p /etc/dhcp/leases
+RUN touch /etc/dhcp/leases/dhcp.leases
 
 COPY dhcpd.conf /etc/dhcp/cfg/dhcpd.conf
 # COPY unbound.conf /etc/unbound/cfg/unbound.conf
