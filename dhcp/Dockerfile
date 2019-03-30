@@ -12,6 +12,6 @@ COPY dhcpd.conf /etc/dhcp/cfg/dhcpd.conf
 # COPY db.flaviani.be /etc/unbound/cfg/db.flaviani.be
 # COPY db.10.10.10 /etc/unbound/cfg/db.10.10.10
 
-CMD ["dhcpd", "-cf", "/etc/dhcp/cfg/dhcpd.conf", "-lf", "/etc/dhcp/leases/dhcp.leases"]
+CMD ["dhcpd", "-f", "-cf", "/etc/dhcp/cfg/dhcpd.conf", "-lf", "/etc/dhcp/leases/dhcp.leases"]
 
 # EXPOSE 67/udp
