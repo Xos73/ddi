@@ -5,7 +5,7 @@ RUN apk --no-cache add syslog-ng
 
 RUN mkdir -p /etc/dhcp/conf
 RUN mkdir -p /etc/dhcp/logs
-RUN touch /var/lib/dhcp/dhcp.leases
+RUN touch /var/lib/dhcp/dhcpd.leases
 
 RUN echo syslog-ng > /root/startup.sh
 RUN echo dhcpd -f -cf /etc/dhcp/conf/dhcpd.conf -lf /var/lib/dhcp/dhcpd.leases >> /root/startup.sh
