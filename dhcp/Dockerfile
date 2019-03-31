@@ -7,7 +7,8 @@ RUN mkdir -p /etc/dhcp/conf
 RUN mkdir -p /etc/dhcp/logs
 # RUN touch /var/lib/dhcp/dhcpd.leases
 
-RUN echo touch /var/lib/dhcp/dhcpd.leases && syslog-ng > /root/startup.sh
+RUN echo syslog-ng > /root/startup.sh
+RUN echo touch /var/lib/dhcp/dhcpd.leases >> /root/startup.sh
 RUN echo dhcpd -f -cf /etc/dhcp/conf/dhcpd.conf -lf /var/lib/dhcp/dhcpd.leases >> /root/startup.sh
 
 # COPY dhcpd.conf /etc/dhcp/conf/dhcpd.conf
