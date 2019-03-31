@@ -28,7 +28,7 @@ docker run -d -p 53:53/udp -p 53:53/tcp ddi_dns
 ### NFS stored information
 ```
 docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run -d -p 53:53/tcp -p 53:53/udp --mount 'src=ddi_conf_NFS,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
+docker run --name ipam_dns_NFS -d -p 53:53/tcp -p 53:53/udp --mount 'src=ddi_conf_NFS,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
 ```
 
 ### Local volume stored information
