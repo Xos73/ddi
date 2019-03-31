@@ -4,7 +4,7 @@ RUN apk --no-cache add dhcp
 
 RUN mkdir -p /etc/dhcp/conf
 RUN mkdir -p /etc/dhcp/logs
-# RUN touch /etc/dhcp/leases/dhcp.leases
+RUN touch /var/lib/dhcp/dhcp.leases
 
 # COPY dhcpd.conf /etc/dhcp/conf/dhcpd.conf
 
