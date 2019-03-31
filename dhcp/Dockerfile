@@ -12,4 +12,4 @@ COPY syslog-ng-dhcpd.conf /etc/syslog-ng/conf.d/syslog-ng-dhcpd.conf
 
 CMD ["dhcpd", "-f", "-cf", "/etc/dhcp/conf/dhcpd.conf", "-lf", "/var/lib/dhcp/dhcp.leases"]
 CMD ["syslog-ng"]
-CMD ["alias ll='ls -al'"]
+CMD ["alias", "ll=","'ls -al'"]
