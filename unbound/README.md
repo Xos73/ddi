@@ -11,13 +11,13 @@ Idea is to use create a docker compose to:
 
 Build the image from the directory containing `Dockerfile` and `unbound.conf`:
 ```
-docker build --tag=unbound_dns .
+docker build --name=ddi_dns .
 ```
 
 Create a container from the built image and listen on port 53, both udp and tcp:
 
 ```
-docker run -d -p 53:53/udp -p 53:53/tcp unbound_dns
+docker run -d -p 53:53/udp -p 53:53/tcp ddi_dns
 ```
 
 ## Build docker solution directly from GitHub:
@@ -28,7 +28,7 @@ docker run -d -p 53:53/udp -p 53:53/tcp unbound_dns
 ### Local volume stored information
 This supposes the local volumes already exists
 ```
-docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
+docker build --name=ddi_dns --tag=ddi https://github.com/Xos73/ddi.git#master:unbound && \
 docker run -d -p 53:53/tcp -p 53:53/udp --mount source=ddi_conf,target=/etc/dhcp/conf,readonly ddi_dns
 ```
 
