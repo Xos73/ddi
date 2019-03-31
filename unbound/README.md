@@ -24,7 +24,16 @@ docker run -d -p 53:53/udp -p 53:53/tcp unbound_dns
 * Make your GitHub directory public
 * Map your NFS volume
 * Build a container and run it
+
+### Local volume stored information
+This supposes the local volumes already exists
 ```
-docker build --tag=unbound_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run -d -p 53:53/tcp -p 53:53/udp --mount 'src=unbound_cfg,dst=/etc/unbound/cfg,volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/config,"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' unbound_dns
+docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
+docker run -d -p 53:53/tcp -p 53:53/udp --mount source=ddi_conf,target=/etc/dhcp/conf,readonly unbound_dns
+```
+
+### NFS stored information
+```
+docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
+docker run -d -p 53:53/tcp -p 53:53/udp --mount 'src=ddi_conf_NFS,dst=/etc/unbound/cfg,volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/config,"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
 ```
