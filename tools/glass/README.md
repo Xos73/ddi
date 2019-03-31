@@ -11,6 +11,25 @@ docker run --name ipam_glass -tid \
  -p 3000:3000 ddi_dhcp_glass:latest
 ```
 
+
+{
+  "admin_user": "glassadmin",
+  "admin_password": "glassadmin",
+  "leases_file": "/var/lib/dhcp/dhcpd.leases",
+  "log_file": "/var/log/dhcp.log",
+  "config_file": "/etc/dhcp/dhcpd.conf",
+  "shared_network_critical_threshold": "95",
+  "shared_network_warning_threshold": "0",
+  "slack_webhook_url": "",
+  "slack_alert_channel": "",
+  "leases_per_minute_threshold": "50",
+  "ip_ranges_to_allow": [
+    ""
+  ],
+  "email_alert_to": "",
+  "sms_alert_to": ""
+}
+
 ## Orig
 Build the image.
 
