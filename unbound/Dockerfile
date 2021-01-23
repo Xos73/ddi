@@ -3,7 +3,7 @@ FROM alpine:latest
 RUN apk --no-cache add unbound
 
 RUN mkdir -p /etc/unbound/conf
-RUN mkdir -p /etc/unbound/log
+RUN mkdir -p /etc/unbound/logs
 # COPY unbound.conf /etc/unbound/conf/unbound.conf
 # COPY db.flaviani.be /etc/unbound/conf/db.flaviani.be
 # COPY db.10.10.10 /etc/unbound/conf/db.10.10.10
