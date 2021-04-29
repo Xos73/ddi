@@ -1,5 +1,8 @@
 # pihole setup
 
+Find password after docjer installation:
+docker logs pihole | grep random
+
 ## Build docker solution directly from GitHub:
 * Make your GitHub directory public
 * Map your NFS volume
