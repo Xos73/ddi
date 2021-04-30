@@ -9,3 +9,6 @@ RUN lighty-enable-mod fastcgi fastcgi-php rewrite
 RUN sed -i 's/server.document-root        = "\/var\/www\/html"/server.document-root        = "\/var\/www\/dnsgui\/docroot"/g' /etc/lighttpd/lighttpd.conf
 COPY 10-rewriteGUI.conf /etc/lighttpd/conf-enabled/rewrite.rule
 RUN systemctl restart lighttpd.service
+RUN chown -R www-data.www-data /var/www/dnsgui/data
+
+EXPOSE 222/tcp
