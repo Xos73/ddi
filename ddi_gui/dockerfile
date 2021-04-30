@@ -7,7 +7,8 @@ RUN apt install -y wget php-cli php-cgi unbound sqlite3 php-sqlite3 lighttpd
 RUN wget -O - https://github.com/kroy-the-rabbit/dnsgui/archive/refs/heads/master.tar.gz | tar xz -C /var/www/ && mv /var/www/dnsgui-master /var/www/dnsgui
 RUN lighty-enable-mod fastcgi fastcgi-php rewrite
 RUN sed -i 's/server.document-root        = "\/var\/www\/html"/server.document-root        = "\/var\/www\/dnsgui\/docroot"/g' /etc/lighttpd/lighttpd.conf
-COPY 10-rewriteGUI.conf /etc/lighttpd/conf-enabled/rewrite.rule
+COPY Setup/10-rewriteGUI.conf /etc/lighttpd/conf-enabled/10-rewriteGUI.conf
+COPY Setup/dns_runner.service /etc/init.d/dns_runner.service
 RUN service lighttpd --full-restart
 RUN chown -R www-data.www-data /var/www/dnsgui/data
 
