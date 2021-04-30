@@ -1,0 +1,9 @@
+FROM debian:stable-slim
+
+RUN apt update && apt upgrade -y
+RUN apt install -y systemd
+RUN apt install -y wget php-cli php-cgi unbound sqlite3 php-sqlite3 lighttpd
+
+RUN wget -O - https://github.com/kroy-the-rabbit/dnsgui/archive/refs/heads/master.tar.gz | tar xz -C /var/www/ && mv /var/www/dnsgui-master /var/www/dnsgui
+RUN lighty-enable-mod fastcgi fastcgi-php rewrite
+RUN sed -i 's/server.document-root        = "\/var\/www\/html"/server.document-root        = "\/var\/www\/dnsgui\/docroot"/g' /etc/lighttpd/lighttpd.conf
