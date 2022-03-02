@@ -12,12 +12,20 @@ Idea is to use create a docker compose to:
 * Map your NFS volume
 * Build a container and run it
 
-### NFS stored information
+### Prereq - NFS client soft
+```
+apt install nfs-common
+```
+
+### Prereq - update hosts file
 ```
 cat <<EOF | sudo tee -a /etc/hosts
 10.10.10.15 ds214.flaviani.local ds214
 EOF
+```
 
+### Create the docker (using NFS storage)
+```
 docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
 docker run --name ipam_dns_NFS -d -p 53:53/tcp -p 53:53/udp --mount 'src=ddi_dns_conf_NFS,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=ds214:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=ds214,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
 ```
