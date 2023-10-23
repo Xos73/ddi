@@ -25,9 +25,14 @@ EOF
 ```
 
 ### Create the docker (using NFS storage)
+Make sure to add a /etc/hosts entry for your NFS server. In my case, this is nfs-srv
+Updated to store conf files in separate location
 ```
 docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run --name ipam_dns_NFS -d -p 53:53/tcp -p 53:53/udp --mount 'src=ddi_dns_conf_NFS,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
+docker run --name ipam_dns -d -p 53:53/tcp -p 53:53/udp \
+  --mount 'src=ipam_dns_conf,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' \
+  --mount 'src=ipam_dns_logs,dst=/etc/unbound/logs,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/logs/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' \
+  ddi_dns
 ```
 
 ## Archive and old/obsolete info
@@ -56,13 +61,8 @@ docker run --name ipam_dns -d -p 53:53/tcp -p 53:53/udp --mount source=ddi_conf,
 docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
 docker run --name ipam_dns_NFS_FixIP -d -p 53:53/tcp -p 53:53/udp --mount 'src=ipam_dns_NFS_FixIP,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=10.10.10.15:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=10.10.10.15,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
 ```
-
-### Updated to store conf files in separate location
-Make sure to add a /etc/hosts entry for your NFS server. In my case, this is nfs-srv
+### Create the docker (using NFS storage), no split of log files
 ```
 docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run --name ipam_dns -d -p 53:53/tcp -p 53:53/udp \
-  --mount 'src=ipam_dns_conf,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' \
-  --mount 'src=ipam_dns_logs,dst=/etc/unbound/logs,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/logs/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' \
-  ddi_dns
+docker run --name ipam_dns_NFS -d -p 53:53/tcp -p 53:53/udp --mount 'src=ddi_dns_conf_NFS,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' ddi_dns
 ```
