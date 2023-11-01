@@ -28,11 +28,11 @@ EOF
 Make sure to add a /etc/hosts entry for your NFS server. In my case, this is nfs-srv
 Updated to store conf files in separate location
 ```
-docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound && \
-docker run --name ipam_dns -d -p 53:53/tcp -p 53:53/udp \
-  --restart=always
-  --mount 'src=ipam_dns_conf,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' \
-  --mount 'src=ipam_dns_logs,dst=/etc/unbound/logs,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/logs/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"' \
+docker build --tag=ddi_dns https://github.com/Xos73/ddi.git#master:unbound &&\
+docker run --name ipam_dns -d -p 53:53/tcp -p 53:53/udp\
+  --restart=always\
+  --mount 'src=ipam_dns_conf,dst=/etc/unbound/conf,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/conf/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"'\
+  --mount 'src=ipam_dns_logs,dst=/etc/unbound/logs,volume-driver=local,volume-opt=type=nfs,volume-opt=device=nfs-srv:/volume1/dockerNFS/logs/dns,"volume-opt=o=addr=nfs-srv,vers=3,soft,timeo=180,bg,tcp,rw"'\
   ddi_dns
 ```
 
